@@ -1,7 +1,7 @@
 // Copyright 2021 Your Name <your_email>
 
-#ifndef CLIENT_HPP_
-#define CLIENT_HPP_
+#ifndef INCLUDE_CLIENT_HPP_
+#define INCLUDE_CLIENT_HPP_
 #include <beast/core.hpp>
 #include <beast/http.hpp>
 #include <beast/version.hpp>
@@ -34,7 +34,9 @@ int client(){
     tcp::socket socket{ios};
 
     // Make the connection on the IP address we get from a lookup
-    net::connect(socket,  resolver.resolve(boost::asio::ip::tcp::resolver::query{host_ip, "http"}));
+    net::connect(socket,
+                 resolver.resolve(boost::asio::ip::tcp::resolver::query
+                                  {host_ip, "http"}));
 
     // Set up an HTTP POST request message
     http::request<http::string_body> req{};
@@ -78,4 +80,4 @@ int client(){
   }
   return EXIT_SUCCESS;
 }
-#endif // CLIENT_HPP_
+#endif // INCLUDE_CLIENT_HPP_
